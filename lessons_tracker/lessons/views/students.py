@@ -6,3 +6,4 @@ from lessons_tracker.lessons.serializers.students import StudentSerializer
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    filterset_fields = "__all__"
