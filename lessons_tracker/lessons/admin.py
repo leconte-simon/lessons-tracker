@@ -1,5 +1,9 @@
 # Register your models here.
 from django.contrib import admin
-from .models import Student
+from django.db.models import Model
+from . import models
 
-admin.site.register(Student)
+for obj_name in dir(models):
+    obj = getattr(models, obj_name)
+    if isinstance(obj, type) and issubclass(obj, Model):
+        admin.site.register(obj)
