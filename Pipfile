@@ -14,6 +14,7 @@ django-filter = "*"
 pre-commit = "*"
 pytest = ">=8, <9"
 pytest-django = ">=4, <5"
+pytest-cov = "*"
 factory-boy = "*"
 
 [requires]
