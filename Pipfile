@@ -11,6 +11,7 @@ djangorestframework = ">=3, <4"
 django-filter = "*"
 granian = "*"
 django-environ = "*"
+psycopg2="*"
 
 [dev-packages]
 pre-commit = "*"
