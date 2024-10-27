@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from lessons_tracker.lessons.models import Student
-from lessons_tracker.lessons.serializers.students import StudentSerializer
+from lessons_tracker.lessons.serializers.student import StudentSerializer
 
 
 class StudentViewSet(viewsets.ModelViewSet):

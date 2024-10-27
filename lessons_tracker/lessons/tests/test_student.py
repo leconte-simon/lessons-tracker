@@ -11,7 +11,7 @@ class FieldValueDict(TypedDict):
     value: Any
 
 
-class TestStudents(TestCase):
+class TestStudent(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
         class_level = ClassLevelFactory()

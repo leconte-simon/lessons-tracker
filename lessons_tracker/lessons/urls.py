@@ -1,5 +1,5 @@
 from django.urls import path
-from lessons_tracker.lessons.views.students import StudentViewSet
+from lessons_tracker.lessons.views.student import StudentViewSet
 from lessons_tracker.lessons.views.class_level import ClassLevelViewSet
 from lessons_tracker.lessons.views.class_subject import ClassSubjectViewSet
 from lessons_tracker.lessons.views.lesson import LessonViewSet
