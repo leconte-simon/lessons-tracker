@@ -10,6 +10,7 @@ phonenumbers = ">=8, <9"
 djangorestframework = ">=3, <4"
 django-filter = "*"
 granian = "*"
+django-environ = "*"
 
 [dev-packages]
 pre-commit = "*"

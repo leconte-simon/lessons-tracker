@@ -24,4 +24,7 @@ jobs:
       - name: Test with pytest
         env:
           DJANGO_SETTINGS_MODULE: settings
+          DJANGO_DEBUG: false
+          DJANGO_SECRET_KEY: "mock-secret-key"
+
         run: pipenv run pytest
