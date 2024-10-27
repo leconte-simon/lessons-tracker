@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MinValueValidator
 
 
 class ClassLevel(models.Model):
@@ -33,11 +34,12 @@ class ClassSubject(models.Model):
 
 class Lesson(models.Model):
     id = models.AutoField(primary_key=True)
-    level = models.ForeignKey(ClassLevel, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
-    datetime = models.DateTimeField()
-    price = models.FloatField()
+    datetime = models.DateTimeField(auto_now_add=True)
+    price = models.FloatField(
+        validators=[MinValueValidator(0.0)]
+    )  # The amount paid by the student
     paid = models.BooleanField()
 
     def __str__(self) -> str:

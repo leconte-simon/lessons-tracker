@@ -2,7 +2,9 @@ import factory
 import factory.fuzzy
 from factory.django import DjangoModelFactory
 
-from lessons_tracker.lessons.models import ClassLevel, Student, ClassSubject
+from lessons_tracker.lessons.models import ClassLevel, Student, ClassSubject, Lesson
+
+import datetime as dt
 
 
 class ClassLevelFactory(DjangoModelFactory):
@@ -28,3 +30,16 @@ class ClassSubjectFactory(DjangoModelFactory):
         model = ClassSubject
 
     name = factory.fuzzy.FuzzyText()
+
+
+class LessonFactory(DjangoModelFactory):
+    class Meta:
+        model = Lesson
+
+    subject = factory.SubFactory(ClassSubjectFactory)
+    student = factory.SubFactory(StudentFactory)
+    datetime = factory.fuzzy.FuzzyDateTime(
+        start_dt=dt.datetime(2022, 1, 1, tzinfo=dt.timezone.utc)
+    )
+    price = factory.fuzzy.FuzzyFloat(low=0, high=100)
+    paid = factory.fuzzy.FuzzyChoice([True, False])
