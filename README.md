@@ -2,19 +2,44 @@
 
 This project provides a django app to register and monitor lessons given by independent private teacher.
 So far, the implementation of the backend only is planned.
+Here, the initial idea was to provide me with a small django app that would allow me to track the
+private lessons I give. 
 
 ## Quick start
 
 Install [`pipenv`](https://pipenv.pypa.io/en/latest/installation.html), which is used as package manager.
-At the root folder, run
 
+Install [`docker`](https://www.docker.com/products/docker-desktop/), which will allow you to set up your
+database, and, if necessary for your use, run the server in a container.
+
+Start by create a `.env` file, which will contain your environment variable and your secrets. It should contain
+```batch
+DJANGO_SETTINGS_MODULE="settings" # Or whatever settings module you want to use
+DJANGO_SECRET_KEY=... # Your private django key
+POSTGRES_USER="lessons_tracker_user"
+POSTGRES_PASSWORD="lessons_tracker_password"
+POSTGRES_DB="lessons_tracker_db"
+```
+At the root folder, run
+```bash
+docker compose up postgres -d
+```
+Install the depencies:
 ```bash
 pipenv install
+```
+
+Apply the migrations:
+```bash
 pipenv run python manage.py migrate
 ```
 
-Launch the django server
+Create an admin account:
+```bash
+pipenv run python manage.py createsuperuser
+```
 
+Launch the django server
 ```bash
 pipenv run python manage.py runserver
 ```
