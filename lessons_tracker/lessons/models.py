@@ -21,3 +21,24 @@ class Student(models.Model):
 
     def __str__(self) -> str:
         return f"{self.id} - {self.name}"
+
+
+class ClassSubject(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.TextField()
+
+    def __str__(self) -> str:
+        return f"{self.id} - {self.name}"
+
+
+class Lesson(models.Model):
+    id = models.AutoField(primary_key=True)
+    level = models.ForeignKey(ClassLevel, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
+    datetime = models.DateTimeField()
+    price = models.FloatField()
+    paid = models.BooleanField()
+
+    def __str__(self) -> str:
+        return f"{self.id} - {self.student.name} - {self.datetime.strftime('%Y-%m-%d %H:%M:%S')}"
