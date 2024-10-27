@@ -1,7 +1,7 @@
 FROM python:3.12
 
-COPY . code
-WORKDIR /code
+COPY . lessons_tracker
+WORKDIR /lessons_tracker
 
 RUN --mount=type=cache,target=/root/.cache \
     pip install --no-cache-dir pipenv
