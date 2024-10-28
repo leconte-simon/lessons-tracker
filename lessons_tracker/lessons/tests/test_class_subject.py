@@ -3,11 +3,16 @@ from rest_framework.test import APIClient
 from rest_framework import status
 from .factories import ClassSubjectFactory
 from lessons_tracker.lessons.models import ClassSubject
+from django.contrib.auth.models import User
 
 
 class TestClassSubject(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
+        self.user = User.objects.create_user(
+            username="testuser", password="testpassword"
+        )
+        self.client.force_login(user=self.user)
 
     def test_class_subject_list(self) -> None:
         ClassSubjectFactory.create_batch(4)
