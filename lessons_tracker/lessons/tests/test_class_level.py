@@ -47,3 +47,13 @@ class TestClassLevel(TestCase):
         class_level = ClassLevelFactory()
         response = self.client.delete(f"/class_level/{class_level.id}/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+
+class TestUnauthenticatedClassLevel(TestCase):
+    def setUp(self) -> None:
+        self.client = APIClient()
+
+    def test_redirects_to_login(self) -> None:
+        response = self.client.get("/class_level/")
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
+        assert response.url == "/accounts/login/?next=/class_level/"
