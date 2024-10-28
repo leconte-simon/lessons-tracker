@@ -53,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "lessons_tracker.middlewares.login_middleware.RequireLoginMiddleware",
 ]
 
 ROOT_URLCONF = "lessons_tracker.urls"
@@ -137,3 +138,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
 }
+
+LOGIN_REQUIRED_URLS = [".*"]
+LOGIN_REQUIRED_URLS_EXCEPTIONS = ["/accounts/.*", "/admin/.*"]
