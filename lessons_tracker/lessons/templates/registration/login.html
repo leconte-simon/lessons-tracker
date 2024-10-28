@@ -1,1 +1,4 @@
-{% extends "admin/login.html" %}
+{% extends "admin/login.html" %} {% block branding %}
+<div id="site-name">{{ site_header|default:_('Login') }}</div>
+{% if user.is_anonymous %} {% include "admin/color_theme_toggle.html" %} {%
+endif %} {% endblock %}
