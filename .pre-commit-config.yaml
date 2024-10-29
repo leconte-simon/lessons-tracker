@@ -63,7 +63,7 @@ repos:
       - id: prettier
         exclude: |
           (?x)(
-             .*/(migrations)/.*
+             .*/templates/.*
            )
         types_or: [html, json, yaml, toml, markdown, javascript]
         additional_dependencies:
