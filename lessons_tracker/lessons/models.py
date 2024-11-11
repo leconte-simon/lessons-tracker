@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinValueValidator
 import django.utils.timezone
+from datetime import timedelta
 
 
 class ClassLevel(models.Model):
@@ -38,6 +39,7 @@ class Lesson(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
     datetime = models.DateTimeField(default=django.utils.timezone.now)
+    duration = models.DurationField(default=timedelta(hours=1))
     price = models.FloatField(validators=[MinValueValidator(0.0)])
     paid = models.BooleanField()
 
