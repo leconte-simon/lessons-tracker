@@ -10,9 +10,21 @@ services:
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
+    volumes:
+      - static_data:/lessons_tracker/static
     command: bash -c "gunicorn lessons_tracker.wsgi:application --bind 0.0.0.0:8000 --error-logfile - --access-logfile - --capture-output"
     depends_on:
       - db
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/:/etc/nginx/
+      - static_data:/lessons_tracker/static
+    depends_on:
+      - lessons_tracker
   db:
     image: postgres:17
     volumes:
@@ -24,3 +36,4 @@ services:
 
 volumes:
   postgres_data:
+  static_data:
