@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "lessons_tracker.lessons",
-    "granian",
 ]
 
 MIDDLEWARE = [
