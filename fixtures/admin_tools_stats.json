@@ -1,0 +1,104 @@
+[
+  {
+    "model": "admin_tools_stats.dashboardstatscriteria",
+    "pk": 1,
+    "fields": {
+      "criteria_name": "Paid",
+      "criteria_fix_mapping": null,
+      "dynamic_criteria_field_name": "paid",
+      "criteria_dynamic_mapping": {
+        "": [null, "All"],
+        "True": [true, "True"],
+        "False": [false, "False"]
+      },
+      "created_date": "2024-11-17T13:55:43.477Z",
+      "updated_date": "2024-11-17T13:55:43.477Z"
+    }
+  },
+  {
+    "model": "admin_tools_stats.dashboardstatscriteria",
+    "pk": 2,
+    "fields": {
+      "criteria_name": "Student",
+      "criteria_fix_mapping": null,
+      "dynamic_criteria_field_name": "student__name",
+      "criteria_dynamic_mapping": null,
+      "created_date": "2024-11-17T14:10:25.797Z",
+      "updated_date": "2024-11-17T14:10:25.797Z"
+    }
+  },
+  {
+    "model": "admin_tools_stats.dashboardstats",
+    "pk": 1,
+    "fields": {
+      "graph_key": "paid",
+      "graph_title": "Paid graph",
+      "model_app_name": "lessons",
+      "model_name": "Lesson",
+      "date_field_name": "datetime",
+      "user_field_name": null,
+      "show_to_users": false,
+      "operation_field_name": "price",
+      "queryset_modifiers": null,
+      "distinct": false,
+      "cache_values": false,
+      "type_operation_field_name": "Sum",
+      "allowed_type_operation_field_name": "",
+      "default_chart_type": "discreteBarChart",
+      "allowed_chart_types": "discreteBarChart,lineChart,multiBarChart,pieChart,stackedAreaChart,multiBarHorizontalChart,linePlusBarChart,scatterChart,cumulativeLineChart,lineWithFocusChart",
+      "default_time_period": 31,
+      "default_time_scale": "months",
+      "allowed_time_scales": "weeks,months,quarters,years",
+      "y_axis_format": ".2f",
+      "default_multiseries_criteria": null,
+      "is_visible": true,
+      "created_date": "2024-11-17T13:46:45.925Z",
+      "updated_date": "2024-11-17T14:11:23.436Z"
+    }
+  },
+  {
+    "model": "admin_tools_stats.criteriatostatsm2m",
+    "pk": 1,
+    "fields": {
+      "criteria": 1,
+      "stats": 1,
+      "order": 0,
+      "prefix": "",
+      "use_as": "chart_filter",
+      "recalculate": false,
+      "default_option": "",
+      "choices_based_on_time_range": false,
+      "count_limit": null
+    }
+  },
+  {
+    "model": "admin_tools_stats.criteriatostatsm2m",
+    "pk": 2,
+    "fields": {
+      "criteria": 2,
+      "stats": 1,
+      "order": null,
+      "prefix": "",
+      "use_as": "chart_filter",
+      "recalculate": false,
+      "default_option": "",
+      "choices_based_on_time_range": false,
+      "count_limit": null
+    }
+  },
+  {
+    "model": "admin_tools_stats.criteriatostatsm2m",
+    "pk": 3,
+    "fields": {
+      "criteria": 2,
+      "stats": 1,
+      "order": null,
+      "prefix": "",
+      "use_as": "multiple_series",
+      "recalculate": false,
+      "default_option": "",
+      "choices_based_on_time_range": false,
+      "count_limit": null
+    }
+  }
+]
