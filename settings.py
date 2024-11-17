@@ -28,10 +28,13 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env("DJANGO_DEBUG", default=False)
 
 ALLOWED_HOSTS: list[str] = env.list("DJANGO_ALLOWED_HOSTS", default=[])
+CSRF_TRUSTED_ORIGINS: list[str] = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[])
 
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_tools_stats",
+    "django_nvd3",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

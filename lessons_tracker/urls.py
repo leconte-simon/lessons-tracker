@@ -25,4 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("lessons_tracker.lessons.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("admin_tools_stats/", include("admin_tools_stats.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
