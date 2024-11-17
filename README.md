@@ -17,9 +17,11 @@ Start by create a `.env` file, which will contain your environment variable and 
 ```batch
 DJANGO_SETTINGS_MODULE="settings" # Or whatever settings module you want to use
 DJANGO_SECRET_KEY=... # Your private django key
-POSTGRES_USER="lessons_tracker_user"
-POSTGRES_PASSWORD="lessons_tracker_password"
-POSTGRES_DB="lessons_tracker_db"
+POSTGRES_USER=...
+POSTGRES_PASSWORD=..
+POSTGRES_DB=...
+DJANGO_CSRF_TRUSTED_ORIGINS=...
+DJANGO_ALLOWED_HOSTS=...
 ```
 
 Put your ssl certificate, key and password in `nginx/` at `cert.pass`, `cert.pem` and `key.pem`.
@@ -75,4 +77,20 @@ Run the tests with [pytest](https://docs.pytest.org/en/stable/)
 
 ```bash
 pipenv run pytest
+```
+
+## Admin tools stats
+
+This server comes with admin charts powered by `django-admin-charts`.
+
+Some charts are already created and available in `fixtures/admin_tools_stats.json`. To load them to your server, you can use
+
+```bash
+pipenv run python manage.py loaddata fixtures/admin_tools_stats.json
+```
+
+In case you create some graphs and wish to keep them, you can generate the file with
+
+```bash
+pipenv run python manage.py dumpdata admin_tools_stats --indent=4 > fixtures/admin_tools_stats.json
 ```
