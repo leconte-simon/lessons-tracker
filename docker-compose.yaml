@@ -2,7 +2,7 @@
 services:
   lessons_tracker: &lessons_tracker
     build:
-      context: .
+      dockerfile: backend.dockerfile
     expose:
       - "8000"
     networks:
@@ -21,7 +21,7 @@ services:
     image: nginx:latest
     container_name: nginx
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/:/etc/nginx/
       - static_data:/lessons_tracker/static
