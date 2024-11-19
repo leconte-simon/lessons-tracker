@@ -22,19 +22,10 @@ POSTGRES_PASSWORD="lessons_tracker_password"
 POSTGRES_DB="lessons_tracker_db"
 ```
 
-Put your ssl certificate, key and password in `nginx/` at `cert.pass`, `cert.pem` and `key.pem`.
-For local development, you can generate it with
-
-```bash
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
-```
-
-You will have to create the `cert.pass` file with the chosen password.
-
 At the root folder, run
 
 ```bash
-docker compose up --build -d
+docker compose up lessons_tracker --build -d
 ```
 
 Install the dependencies:
