@@ -5,3 +5,4 @@ db.sqlite3
 .coverage
 __pycache__/
 static/
+certbot/
