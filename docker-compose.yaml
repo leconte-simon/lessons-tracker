@@ -20,8 +20,8 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
-    env_file:
-      - .env
+    environment:
+      - DOMAIN=blabla
     ports:
       - "443:443"
       - "80:80"
