@@ -1,5 +1,5 @@
 ---
-default_stages: [commit]
+default_stages: [pre-commit]
 minimum_pre_commit_version: 3.0.0
 default_language_version:
   python: python3.12
@@ -9,7 +9,7 @@ repos:
       - id: pipenv-lock-verify
         name: pipenv-lock-verify
         files: (Pipfile|Pipfile.lock)
-        entry: bash -c "pipenv verify"
+        entry: pipenv verify
         pass_filenames: false
         language: system
 
