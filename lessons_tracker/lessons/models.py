@@ -53,3 +53,6 @@ class LessonToSubjectRelation(models.Model):
     id = models.AutoField(primary_key=True)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("lesson", "subject")

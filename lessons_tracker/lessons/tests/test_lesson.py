@@ -34,13 +34,16 @@ class LessonTestCase(TestCase):
             "/lessons/",
             {
                 "student": student.pk,
-                "subject": class_subject.pk,
+                "subjects": [class_subject.pk, class_subject.pk],
                 "price": 20,
                 "paid": False,
             },
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         lesson = Lesson.objects.get(id=response.data["id"])
+        assert (
+            lesson.subjects.count() == 1
+        )  # Only one many to many relation should be created
         assert lesson.price == 20
         assert (dt.datetime.now(dt.timezone.utc) - lesson.datetime) <= dt.timedelta(
             seconds=5
