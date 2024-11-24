@@ -37,7 +37,9 @@ class ClassSubject(models.Model):
 class Lesson(models.Model):
     id = models.AutoField(primary_key=True)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
+    subjects = models.ManyToManyField(
+        ClassSubject, through="LessonToSubjectRelation", related_name="lessons"
+    )
     datetime = models.DateTimeField(default=django.utils.timezone.now)
     duration = models.DurationField(default=timedelta(hours=1))
     price = models.FloatField(validators=[MinValueValidator(0.0)])
@@ -45,3 +47,9 @@ class Lesson(models.Model):
 
     def __str__(self) -> str:
         return f"{self.id} - {self.student.name} - {self.datetime.strftime('%Y-%m-%d %H:%M:%S')}"
+
+
+class LessonToSubjectRelation(models.Model):
+    id = models.AutoField(primary_key=True)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    subject = models.ForeignKey(ClassSubject, on_delete=models.CASCADE)
