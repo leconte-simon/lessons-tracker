@@ -7,7 +7,7 @@ private lessons I give.
 
 ## Quick start
 
-Install [`pipenv`](https://pipenv.pypa.io/en/latest/installation.html), which is used as package manager.
+Install [`uv`](https://docs.astral.sh/uv/), which is used as package manager.
 
 Install [`docker`](https://www.docker.com/products/docker-desktop/), which will allow you to set up your
 database, and, if necessary for your use, run the server in a container.
@@ -33,41 +33,35 @@ docker compose up lessons_tracker --build -d
 Install the dependencies:
 
 ```bash
-pipenv install
+uv sync
 ```
 
 Apply the migrations:
 
 ```bash
-pipenv run python manage.py migrate
+uv run manage.py migrate
 ```
 
 Create an admin account:
 
 ```bash
-pipenv run python manage.py createsuperuser
+uv run manage.py createsuperuser
 ```
 
 Launch the django server
 
 ```bash
-pipenv run python manage.py runserver
+uv run manage.py runserver
 ```
 
 ## Run the tests
-
-Install the dev dependencies with
-
-```bash
-pipenv install --dev
-```
 
 Make sure to configure the `DJANGO_SETTINGS_MODULE` environment variable.
 
 Run the tests with [pytest](https://docs.pytest.org/en/stable/)
 
 ```bash
-pipenv run pytest
+uv run pytest
 ```
 
 ## Admin tools stats
