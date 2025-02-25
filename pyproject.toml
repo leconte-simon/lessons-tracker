@@ -1,0 +1,29 @@
+[project]
+name = "lessons_tracker"
+version = "0.0.0"
+description = "A backend application to track lessons given by an independent private teacher."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "django>=5, <6",
+    "django-phonenumber-field>=7, <8",
+    "django-admin-charts>=1, <2",
+    "phonenumbers>=8, <9",
+    "djangorestframework>=3, <4",
+    "django-filter>=24, <25",
+    "gunicorn>=23, <24",
+    "django-environ>=0.11, <0.12",
+    "psycopg2>=2, <3",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit",
+    "pytest>=8, <9",
+    "pytest-django>=4, <5",
+    "pytest-cov>=5, <6",
+    "factory-boy>=3, <4",
+]
+
+[tool.uv]
+required-version = ">=0.5.29"
