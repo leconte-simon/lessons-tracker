@@ -3,8 +3,8 @@ services:
   lessons_tracker: &lessons_tracker
     build:
       dockerfile: backend.dockerfile
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     networks:
       - lessons_tracker_network
     env_file:
@@ -17,22 +17,7 @@ services:
     command: bash -c "gunicorn lessons_tracker.wsgi:application --bind 0.0.0.0:8000 --error-logfile - --access-logfile - --capture-output"
     depends_on:
       - db
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-      - "443:443"
-      - "80:80"
-    volumes:
-      - ./nginx/:/etc/nginx/
-      - static_data:/lessons_tracker/static
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    depends_on:
-      - lessons_tracker
-      - certbot
-    networks:
-      - lessons_tracker_network
+
   db:
     image: postgres:17
     volumes:
@@ -43,11 +28,6 @@ services:
       - 5432:5432
     networks:
       - lessons_tracker_network
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
 
 volumes:
   postgres_data:
